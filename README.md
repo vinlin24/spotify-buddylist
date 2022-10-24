@@ -1,10 +1,10 @@
-<h1 style="text-align: center">
+<h1 align="center">
   spotify-buddylist
 </h1>
 
 <!-- START BADGES -->
 
-<div style="text-align: center">
+<div align="center">
   <span>
     <img
       src="https://img.shields.io/badge/Version-0.0.0-brightgreen"
