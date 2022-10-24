@@ -36,10 +36,14 @@ A minimal Python version of the [spotify-buddylist](https://www.npmjs.com/packag
 
 ## Ported Features
 
-- `getWebAccessToken` -> `get_web_access_token`
-- `getFriendActivity` -> `get_friend_activity`
+- `getWebAccessToken` ->
+  - `get_web_access_token` (sync)
+  - `fetch_web_access_token` (async)
+- `getFriendActivity` ->
+  - `get_friend_activity` (sync)
+  - `fetch_friend_activity` (async)
 
-However, this package uses a more object-oriented approach. These functions return objects instead of raw JSON dictionaries. Data fields can then be extracted from them with familiar dot notation.
+However, this package uses a more object-oriented approach. These functions return dataclasses instead of raw JSON dictionaries. Data fields can then be extracted from them with familiar dot notation.
 
 
 ## Quickstart
