@@ -27,7 +27,7 @@ uri_matcher = re.compile(URI_PATTERN)
 
 
 @dataclass
-class _NamedBase:
+class NamedBase:
     """Base for dataclasses that have a unique URI and a name field."""
     uri: str
     name: str
@@ -44,29 +44,29 @@ class _NamedBase:
 
 
 @dataclass
-class User(_NamedBase):
+class User(NamedBase):
     """A minimal model of the friend user."""
     imageUrl: str
 
 
 @dataclass
-class Album(_NamedBase):
+class Album(NamedBase):
     """A minimal model of the album of the displayed track."""
 
 
 @dataclass
-class Artist(_NamedBase):
+class Artist(NamedBase):
     """A minimal model of the artist of the displayed track."""
 
 
 @dataclass
-class Context(_NamedBase):
+class Context(NamedBase):
     """The context of the displayed track."""
     index: int
 
 
 @dataclass
-class Track(_NamedBase):
+class Track(NamedBase):
     """The track displayed in friend activity."""
     imageUrl: str
     album: Album
@@ -89,3 +89,15 @@ class AccessFields:
     accessToken: str
     accessTokenExpirationTimestampMs: datetime
     isAnonymous: bool
+
+
+# What to export to package namespace
+__all__ = (
+    "User",
+    "Album",
+    "Artist",
+    "Context",
+    "Track",
+    "FriendActivity",
+    "AccessFields",
+)
