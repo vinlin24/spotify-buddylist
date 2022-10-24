@@ -87,7 +87,7 @@ class AccessFields:
     """Credentials returned by the get_access_token endpoint."""
     clientId: str
     accessToken: str
-    accessTokenExpirationTimestampMs: datetime
+    accessTokenExpirationTimestamp: datetime
     isAnonymous: bool
 
 

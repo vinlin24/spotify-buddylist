@@ -30,9 +30,9 @@ def get_web_access_token(sp_dc_cookie: str) -> AccessFields:
     # Process the JSON data
     data: Dict[str, Any] = response.json()
     # Convert millisecond timestamp to datetime
-    timestamp_ms: int = data["accessTokenExpirationTimestampMs"]
+    timestamp_ms: int = data.pop("accessTokenExpirationTimestampMs")
     timestamp_dt = datetime.fromtimestamp(timestamp_ms / 1000, timezone.utc)
-    data["accessTokenExpirationTimestampMs"] = timestamp_dt
+    data["accessTokenExpirationTimestamp"] = timestamp_dt
 
     # Construct and return the dataclass
     return AccessFields(**data)
