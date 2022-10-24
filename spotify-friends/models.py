@@ -31,20 +31,22 @@ class _NamedBase:
     """Base for dataclasses that have a unique URI and a name field."""
     uri: str
     name: str
-    url: str = field(init=False)
+
+    # Not part of JSON responses, but convenient to have
+    spotify_url: str = field(init=False)
 
     def __post_init__(self) -> None:
         match = uri_matcher.match(self.uri)
         if match is None:
             raise ValueError(f"{self.uri=} does not match {URI_PATTERN=}")
         category, id_ = match.groups()
-        self.url = URL_TEMPLATE.format(category=category, id=id_)
+        self.spotify_url = URL_TEMPLATE.format(category=category, id=id_)
 
 
 @dataclass
 class User(_NamedBase):
     """A minimal model of the friend user."""
-    image_url: str
+    imageUrl: str
 
 
 @dataclass
@@ -66,7 +68,7 @@ class Context(_NamedBase):
 @dataclass
 class Track(_NamedBase):
     """The track displayed in friend activity."""
-    image_url: str
+    imageUrl: str
     album: Album
     artist: Artist
     context: Context
@@ -83,7 +85,7 @@ class FriendActivity:
 @dataclass
 class AccessFields:
     """Credentials returned by the get_access_token endpoint."""
-    client_id: str
-    access_token: str
-    access_token_expiration: datetime
-    is_anonymous: bool
+    clientId: str
+    accessToken: str
+    accessTokenExpirationTimestampMs: datetime
+    isAnonymous: bool
