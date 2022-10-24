@@ -78,3 +78,12 @@ class FriendActivity:
     timestamp: datetime
     user: User
     track: Track
+
+
+@dataclass
+class AccessFields:
+    """Credentials returned by the get_access_token endpoint."""
+    client_id: str
+    access_token: str
+    access_token_expiration: datetime
+    is_anonymous: bool
