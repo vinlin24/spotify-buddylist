@@ -163,5 +163,8 @@ cython_debug/
 .vscode*/
 *.code-workspace
 
+# Testing on my own friend activity
+tests/test_data.json
+
 # Universal exception
 !.gitkeep
